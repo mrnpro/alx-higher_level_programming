@@ -1,84 +1,99 @@
 #!/usr/bin/python3
-'''
-    Defines a Rectangle
-'''
+"""""This module create a rectangle"""
 
 
 class Rectangle:
+    """
+    class that generate a rectangle
+    """
     def __init__(self, width=0, height=0):
-        '''
-            Calling the setters to initialize the instance variables
-        '''
-        self.height = height
+        """Constructor initialize the class rectangle
+        Keyword Arguments:
+            width {int} -- width of the rectangle (default: {0})
+            height {int} -- height of the rectangle (default: {0})
+        """
         self.width = width
+        self.height = height
 
     @property
     def width(self):
-        '''
-            Returning the private var
-        '''
+        """Getter function of width
+        Returns:
+            int -- width fo the rectangle
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        '''
-            Checking for TypeError and ValueError
-            then setting up the private var
-        '''
-        if not isinstance(value, int):
+        """Setter function to width
+        Arguments:
+            value {int} -- [valeu of width]
+        Raises:
+            TypeError: width must be an integer
+            ValueError: width must be >= 0
+        """
+        if type(value) != int:
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
+
         self.__width = value
 
     @property
     def height(self):
-        '''
-            Returning the private var
-        '''
+        """Getter function to height
+        Returns:
+            int -- height of the rectangle
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        '''
-            Checking for TypeError and ValueError
-            then setting up the private var
-        '''
-        if not isinstance(value, int):
+        """Setter function os height
+        Arguments:
+            value {int} -- Value of height
+        Raises:
+            TypeError: height must be an integer
+            ValueError: height must be >= 0
+        """
+        if type(value) != int:
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
+
         self.__height = value
 
     def area(self):
-        '''
-            Calculates the area of a rectangle
-        '''
-        return self.height * self.width
+        """Generate area of the rectangle
+        Returns:
+            Int -- total area of rectangle
+        """
+        return self.__width * self.__height
 
     def perimeter(self):
-        '''
-            Calculates the perimeter of a rectangle
-        '''
-        if self.height == 0 or self.width == 0:
+        """Find the perimeter of a rectangle
+        Returns:
+            int -- total perimeter of the rectangle
+        """
+        if self.__width == 0 or self.__height == 0:
             return 0
-
-        return (self.height + self.width) * 2
+        return 2 * (self.__height + self.__width)
 
     def __str__(self):
-        '''
-            returning the string representation of the rectangle
-        '''
-        rectangle = ""
-        if self.height == 0 or self.width == 0:
-            return rectangle
-
-        for h in range(self.height - 1):
-            rectangle += "#" * self.width + "\n"
-        rectangle += "#" * self.width
-        return rectangle
+        """Method that get string representation rectangle
+        Returns:
+            string -- string representation
+        """
+        string = ""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        for row in range(self.__height):
+            for col in range(self.__width):
+                string = string + '#'
+            string = string + '\n'
+        return string[:-1]
 
     def __repr__(self):
-        rep = "{}({}, {})".format(self.__class__.__name__,
-                                  self.width, self.height)
-        return rep
+        """Rerurn string of the rectangle
+        """
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
