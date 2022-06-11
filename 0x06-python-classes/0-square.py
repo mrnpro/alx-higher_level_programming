@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-class Square():
-    '''
-        An empty square class
-    '''
+"""empty class that defines a square"""
+
+class Square:
+    """square class with an artribute"""
     pass
