@@ -1,35 +1,19 @@
 #!/usr/bin/python3
-'''
-    Defines a student class
-'''
+"""Student class"""
 
 
 class Student:
-    '''
-        Defines a student class
-    '''
+    """A class representation of a student"""
+
     def __init__(self, first_name, last_name, age):
-        '''
-            Initializing instance variables
-        '''
+        """Initializes a new student"""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        '''
-            Retrives the dict representation of the class
-        '''
-        my_dict = {}
-        if type(attrs) == list:
-            for i in attrs:
-                if type(i) != str:
-                        my_dict = self.__dict__
-                        break
-                try:
-                    my_dict[i] = getattr(self, i)
-                except:
-                    pass
-        else:
-            my_dict = self.__dict__
-        return (my_dict)
+        """retrieves a dictionary representation of a Student instance"""
+        if (type(attrs) == list and
+            all(type(ele) == str for ele in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
