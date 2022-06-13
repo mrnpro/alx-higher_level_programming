@@ -1,8 +1,7 @@
-#!/usr/bin/python3
-'''
-    Implementing a Geometry class
-'''
 
+#!/usr/bin/python3
+"""BaseGeometry class"""
 
 class BaseGeometry:
+    """empty class"""
     pass
