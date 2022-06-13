@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+"""write_file function"""
+
+
 def write_file(filename="", text=""):
-    with open(filename, mode="w") as fd:
-        nbc = fd.write(text)
-    return nbc
+    """reads filename with utf-8"""
+    with open(filename, "w", encoding='utf-8') as fd:
+        return fd.write(text)
